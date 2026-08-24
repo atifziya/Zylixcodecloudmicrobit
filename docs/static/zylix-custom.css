@@ -1,0 +1,57 @@
+/* 1. PERMANENTLY KILL THE HOME SCREEN */
+.homepage, .projectsdialog {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+/* 2. KEEP THE EDITOR WORKSPACE DARK */
+body, .pxt-app, #root {
+    background-color: #0b1120 !important;
+}
+
+/* 3. CLEAN UP THE EDITOR HEADER */
+#mainmenu {
+    background: #0f1a2e !important;
+    border-bottom: 1px solid #2a3f5f !important;
+}
+
+/* Hide all Microsoft/MakeCode buttons in the header */
+#mainmenu .signin, 
+#mainmenu .profile, 
+#mainmenu .home.icon,
+#mainmenu .import, 
+#mainmenu .search, 
+#mainmenu .tutorials {
+    display: none !important;
+}
+
+/* ====================================================
+   PERMANENTLY SET SECOND LOGO & TEXT TO 2.4rem
+   ==================================================== */
+#mainmenu .brand, 
+.menubar .ui.menu .brand,
+.ui.menu .item.brand {
+    display: flex !important;
+    align-items: center !important;
+    height: auto !important;
+}
+
+#mainmenu .brand img, 
+.menubar .ui.menu .brand img,
+.ui.menu .brand .ui.logo img,
+.ui.menu .brand img {
+    height: 2.4rem !important;
+    width: auto !important;
+    max-height: none !important;
+    object-fit: contain !important;
+}
+
+/* Brand text size adjustment */
+#mainmenu .brand span,
+.menubar .ui.menu .brand span {
+    font-size: 1.4rem !important;
+    line-height: 2.4rem !important;
+    margin-left: 8px !important;
+}

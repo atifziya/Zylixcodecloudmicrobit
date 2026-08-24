@@ -1,0 +1,351 @@
+<!-- ZylixCode UI Overhaul – Modern, No Tutorials -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   RESET – Wipe out everything Microsoft
+   ============================================ */
+:root {
+    --z-bg: #0b1120;
+    --z-surface: #142133;
+    --z-surface2: #1e2d45;
+    --z-card: #1a2940;
+    --z-border: #2a3f5f;
+    --z-text: #e8edf5;
+    --z-muted: #94a3b8;
+    --z-blue: #3b82f6;
+    --z-purple: #a855f7;
+    --z-glow: 0 0 30px rgba(59,130,246,0.15);
+}
+
+* {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+body, .pxt-app, #root, .ui.inverted.menu, .ui.inverted.segment {
+    background-color: var(--z-bg) !important;
+    color: var(--z-text) !important;
+}
+
+/* ---- HEADER: Only Logo + New Project (Modern) ---- */
+#mainmenu {
+    background: linear-gradient(135deg, #0f1a2e 0%, #1a2a44 100%) !important;
+    border-bottom: 1px solid var(--z-border) !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.6) !important;
+    padding: 0 24px !important;
+    height: 64px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+}
+
+/* Hide ALL menu items except logo and new project */
+#mainmenu .ui.item:not(.logo):not(.newproject):not(.dropdown) {
+    display: none !important;
+}
+
+/* Specifically hide Sign In, Profile, Home, Import, Search, Tutorials, etc. */
+#mainmenu .signin,
+#mainmenu .profile,
+#mainmenu .home.icon,
+#mainmenu .import,
+#mainmenu .search,
+#mainmenu .tutorials,
+#mainmenu .viewall,
+#mainmenu [data-content="Home"],
+#mainmenu [data-content="Import"],
+#mainmenu [data-content="Search"],
+#mainmenu a[href*="home"] {
+    display: none !important;
+}
+
+/* ---- LOGO ---- */
+#mainmenu .logo a {
+    font-size: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+}
+#mainmenu .logo img {
+    height: 38px !important;
+    width: auto !important;
+    filter: drop-shadow(0 0 12px rgba(59,130,246,0.4)) !important;
+}
+
+/* ---- MODERN "New Project" Button ---- */
+#mainmenu .newproject.ui.button {
+    background: linear-gradient(135deg, var(--z-blue), var(--z-purple)) !important;
+    color: #fff !important;
+    font-weight: 700 !important;
+    font-size: 15px !important;
+    border-radius: 30px !important;
+    padding: 10px 28px !important;
+    box-shadow: 0 0 25px rgba(59,130,246,0.3), 0 4px 15px rgba(0,0,0,0.3) !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+    letter-spacing: 0.5px !important;
+}
+#mainmenu .newproject.ui.button:hover {
+    transform: scale(1.05) !important;
+    box-shadow: 0 0 45px rgba(168,85,247,0.4), 0 4px 20px rgba(0,0,0,0.4) !important;
+}
+
+/* ---- HOME PAGE (Project Gallery) – Clean, Modern ---- */
+.projectsdialog, .homepage {
+    background: var(--z-bg) !important;
+}
+
+/* Remove the Hero section (New? Start here!) */
+.projectsdialog .hero-card,
+.projectsdialog .hero,
+.projectsdialog [class*="hero"],
+.projectsdialog .ui.card:has(.header:contains("New?")),
+.projectsdialog .ui.card:has(.description:contains("New?")) {
+    display: none !important;
+}
+
+/* ---- Hide ALL Tutorials (aggressive) ---- */
+/* Hide any element that has "tutorial" in class, id, or data attribute */
+[class*="tutorial"],
+[id*="tutorial"],
+[data-section="tutorials"],
+[data-section*="tutorial"],
+[data-tutorial],
+.section-tutorials,
+.tutorials,
+.tutorial-section,
+.tutorial-gallery,
+.tutorial-card,
+.tutorial-list {
+    display: none !important;
+}
+
+/* Hide any heading that says "Tutorials" and its parent containers */
+.projectsdialog .ui.header:contains("Tutorials"),
+.projectsdialog .ui.header:contains("tutorials") {
+    display: none !important;
+}
+.projectsdialog .ui.segment:has(.ui.header:contains("Tutorials")),
+.projectsdialog .ui.card:has(.ui.header:contains("Tutorials")),
+.projectsdialog > div:has(.ui.header:contains("Tutorials")) {
+    display: none !important;
+}
+
+/* Also hide "Games", "Radio Games", "Courses", "Jacdac", etc. – these are project categories but might contain tutorials */
+.projectsdialog .ui.header:contains("Games"),
+.projectsdialog .ui.header:contains("Radio Games"),
+.projectsdialog .ui.header:contains("Courses"),
+.projectsdialog .ui.header:contains("Jacdac"),
+.projectsdialog .ui.header:contains("Science Experiments"),
+.projectsdialog .ui.header:contains("Make it: code it"),
+.projectsdialog .ui.header:contains("Behind the MakeCode") {
+    display: none !important;
+}
+/* Also hide their parent containers */
+.projectsdialog .ui.segment:has(.ui.header:contains("Games")),
+.projectsdialog .ui.card:has(.ui.header:contains("Games")),
+.projectsdialog > div:has(.ui.header:contains("Games")) {
+    display: none !important;
+}
+
+/* ---- Project Cards – Modern Glassmorphism ---- */
+.projectsdialog .ui.card {
+    background: rgba(26, 41, 64, 0.7) !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid var(--z-border) !important;
+    border-radius: 16px !important;
+    box-shadow: var(--z-glow) !important;
+    transition: all 0.3s ease !important;
+    overflow: hidden !important;
+}
+.projectsdialog .ui.card:hover {
+    transform: translateY(-6px) !important;
+    border-color: var(--z-blue) !important;
+    box-shadow: 0 0 45px rgba(59,130,246,0.2), 0 8px 30px rgba(0,0,0,0.4) !important;
+}
+.projectsdialog .ui.card .header {
+    color: var(--z-text) !important;
+    font-weight: 700 !important;
+    font-size: 18px !important;
+}
+.projectsdialog .ui.card .meta {
+    color: var(--z-muted) !important;
+    font-size: 14px !important;
+}
+
+/* ---- Toolbox (Sidebar) ---- */
+.pxtToolbox, .blocklyToolboxDiv {
+    background: var(--z-surface) !important;
+    border-right: 1px solid var(--z-border) !important;
+}
+.blocklyTreeRow {
+    padding: 8px 14px !important;
+    border-radius: 8px !important;
+    margin: 3px 8px !important;
+    transition: all 0.15s !important;
+}
+.blocklyTreeRow:hover {
+    background: var(--z-surface2) !important;
+}
+.blocklyTreeSelected {
+    background: linear-gradient(135deg, var(--z-blue), var(--z-purple)) !important;
+    box-shadow: var(--z-glow) !important;
+}
+.blocklyTreeLabel {
+    font-weight: 500 !important;
+    font-size: 14px !important;
+}
+
+/* ---- Workspace ---- */
+.blocklyMainBackground {
+    fill: var(--z-bg) !important;
+}
+.blocklyFlyoutBackground {
+    fill: var(--z-surface) !important;
+    fill-opacity: 0.95 !important;
+}
+
+/* ---- Simulator ---- */
+#boardview {
+    background: var(--z-surface) !important;
+    border-radius: 16px !important;
+    border: 1px solid var(--z-border) !important;
+}
+
+/* ---- Hide Footer ---- */
+.ui.footer {
+    display: none !important;
+}
+
+/* ---- Custom Scrollbar ---- */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background: var(--z-bg);
+}
+::-webkit-scrollbar-track {
+    background: var(--z-surface);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--z-blue);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--z-purple);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+    #mainmenu .logo img {
+        height: 28px !important;
+    }
+    #mainmenu .newproject.ui.button {
+        padding: 8px 18px !important;
+        font-size: 13px !important;
+    }
+}
+</style>
+
+<script>
+(function() {
+    var EXTERNAL_URL = 'https://www.zylixcodecloud.in/';
+
+    // ---- Override PXT config ----
+    function overrideConfig() {
+        if (window.pxt && window.pxt.appTarget && window.pxt.appTarget.appTheme) {
+            window.pxt.appTarget.appTheme.showHomeScreen = false;
+            window.pxt.appTarget.appTheme.homeUrl = EXTERNAL_URL;
+            window.pxt.appTarget.appTheme.organizationUrl = EXTERNAL_URL;
+            window.pxt.appTarget.appTheme.logoUrl = EXTERNAL_URL;
+        }
+    }
+
+    // ---- Remove all tutorial-related elements and unwanted sections ----
+    function removeUnwanted() {
+        // 1. Remove by class/id containing "tutorial"
+        var tutorialEls = document.querySelectorAll('[class*="tutorial"], [id*="tutorial"], [data-section*="tutorial"], [data-tutorial]');
+        tutorialEls.forEach(function(el) {
+            if (el.closest('#mainmenu')) return;
+            el.remove();
+        });
+
+        // 2. Remove sections where header contains "Tutorials", "Games", "Courses", "Jacdac", etc.
+        var unwantedHeadings = ['Tutorials', 'tutorials', 'Games', 'Radio Games', 'Courses', 'Jacdac', 'Science Experiments', 'Make it: code it', 'Behind the MakeCode'];
+        var headers = document.querySelectorAll('.ui.header');
+        headers.forEach(function(header) {
+            var text = header.textContent.trim();
+            if (unwantedHeadings.some(function(keyword) { return text.includes(keyword); })) {
+                var container = header.closest('.ui.segment, .ui.card, .section, .projectsdialog > div');
+                if (container) {
+                    container.remove();
+                } else {
+                    header.remove();
+                }
+            }
+        });
+
+        // 3. Remove Hero card (New? Start here!)
+        var heroCards = document.querySelectorAll('.projectsdialog .ui.card .header:contains("New?")');
+        heroCards.forEach(function(el) {
+            var card = el.closest('.ui.card');
+            if (card) card.remove();
+        });
+        // Fallback: remove any card with "Start Tutorial"
+        var startTutorial = document.querySelectorAll('.projectsdialog .ui.card .description:contains("Start Tutorial")');
+        startTutorial.forEach(function(el) {
+            var card = el.closest('.ui.card');
+            if (card) card.remove();
+        });
+    }
+
+    // ---- Intercept clicks on logo and home links ----
+    document.addEventListener('click', function(e) {
+        var target = e.target.closest('a[href]');
+        if (!target) return;
+        var href = target.getAttribute('href');
+        var isLogo = target.closest('.logo') || target.closest('.ui.image.logo');
+        var isInMainMenu = target.closest('#mainmenu');
+        if ((isLogo || href === '#' || href === '' || href === '/' || (href && href.includes('home'))) && isInMainMenu) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = EXTERNAL_URL;
+        }
+    }, true);
+
+    // ---- MutationObserver to keep things clean ----
+    var observer = new MutationObserver(function() {
+        overrideConfig();
+        removeUnwanted();
+        // Force logo link to external
+        document.querySelectorAll('#mainmenu .logo a').forEach(function(link) {
+            if (link.href && !link.href.includes('zylixcodecloud')) {
+                link.href = EXTERNAL_URL;
+            }
+        });
+        // Hide unwanted elements in main menu
+        document.querySelectorAll('#mainmenu .signin, #mainmenu .profile, #mainmenu .home.icon, #mainmenu .import, #mainmenu .search, #mainmenu .tutorials').forEach(function(el) {
+            el.style.display = 'none';
+        });
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // ---- Initial runs ----
+    overrideConfig();
+    removeUnwanted();
+
+    // ---- Periodic cleanup ----
+    var cleanup = setInterval(function() {
+        overrideConfig();
+        removeUnwanted();
+        document.querySelectorAll('#mainmenu .logo a').forEach(function(link) {
+            if (link.href && !link.href.includes('zylixcodecloud')) {
+                link.href = EXTERNAL_URL;
+            }
+        });
+        document.querySelectorAll('#mainmenu .signin, #mainmenu .profile, #mainmenu .home.icon, #mainmenu .import, #mainmenu .search, #mainmenu .tutorials').forEach(function(el) {
+            el.style.display = 'none';
+        });
+    }, 500);
+
+    // Stop after 15 seconds (enough for React to settle)
+    setTimeout(function() { clearInterval(cleanup); }, 15000);
+})();
+</script>

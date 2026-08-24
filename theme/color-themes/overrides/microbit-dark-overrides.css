@@ -1,0 +1,182 @@
+/* ============================================
+   ZylixCode Dark Theme Overrides - Neon Slate
+   Colors: #0f172a (Deep Slate), #1e293b (Slate)
+   Accents: #3b82f6 (Neon Blue), #a855f7 (Neon Purple)
+   ============================================ */
+
+/* --- 1. Focus & Accent Fixes (Neon Blue instead of Yellow) --- */
+#simulator .editor-sidebar .filemenu {
+    --pxt-focus-border: #3b82f6; /* Changed from yellow to ZylixCode Neon Blue */
+}
+
+#langmodal #availablelocales .langoption .header {
+    /* Better contrast than default, which is purple */
+    color: var(--pxt-neutral-foreground1);
+}
+
+/* --- 2. Toolbox & Blockly Text Contrast --- */
+.pxtToolbox span.blocklyTreeLabel,
+.pxtToolbox .blocklyTreeSelected span.blocklyTreeLabel,
+.pxtToolbox .blocklyTreeSelected .blocklyTreeIcon {
+    color: var(--pxt-target-foreground3);
+}
+
+.pxtToolbox #advanced > .blocklyTreeRow {
+    border-color: var(--pxt-neutral-alpha80);
+}
+.pxtToolbox #advanced > .blocklyTreeRow .blocklyTreeIcon {
+    color: var(--pxt-neutral-alpha80);
+}
+
+/* --- 3. Icons Brightness (Neon Pop Effect) --- */
+.pxtToolbox #serial .blocklyTreeIcon,
+.tutorial-container .serial span.docs.inlineblock,
+.pxtToolbox #control .blocklyTreeIcon,
+.tutorial-container .control span.docs.inlineblock {
+    /* Boosts brightness and saturation to make neon colors pop on dark bg */
+    filter: brightness(1.3) saturate(2.5);
+}
+
+/* --- 4. Menu & Card Borders --- */
+#mainmenu {
+    border-bottom: 1px solid var(--pxt-header-stencil);
+}
+
+.projectsdialog .ui.card:hover {
+    border-color: var(--pxt-focus-border) !important;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.3) !important; /* Neon glow on hover */
+}
+
+/* --- 5. Simulator & Sidebar Backgrounds --- */
+#simulator #editorSidebar.editor-sidebar {
+    background-color: var(--pxt-target-background1);
+}
+
+.fullscreensim #boardview {
+    background: var(--pxt-target-background2);
+}
+
+/* --- 6. Inverted Image Filters (Search Icons etc.) --- */
+.barcharticon,
+.blockly-ws-search-next-btn,
+.blockly-ws-search-previous-btn,
+.blockly-ws-search-close-btn {
+    filter: invert(1);
+}
+
+/* --- 7. Immersive Reader Button --- */
+.modals .ui.button.immersive-reader-button,
+#mainmenu .immersive-reader-button.ui.item,
+#simulator .editor-sidebar .immersive-reader-button.ui.item {
+    background-image: url("/static/icons/immersive-reader-light.svg") !important;
+}
+
+/* --- 8. Carousel Arrows --- */
+.carouselarrow {
+    opacity: 0.9;
+}
+
+/* --- 9. Inverted Buttons (Dark Background) --- */
+button.ui.button.inverted:not(.teaching-bubble-button),
+button.common-button.inverted:not(.teaching-bubble-button) {
+    background-color: var(--pxt-neutral-background2) !important;
+}
+
+button.ui.button.inverted:hover:not(.teaching-bubble-button),
+button.common-button.inverted:hover:not(.teaching-bubble-button) {
+    background-color: var(--pxt-neutral-background2-hover) !important;
+}
+
+/* --- 10. Diff View (Git/Update changes) --- */
+table.diffview.update .diff-added .ch-added {
+    color: var(--pxt-neutral-background1) !important;
+}
+
+/* ============================================
+   🚀 ZYLIXCODE ADDITIONS (Custom Neon Enhancements)
+   ============================================ */
+
+/* --- 11. Custom Scrollbars (Neon Blue Track & Thumb) --- */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background: #0f172a; /* Deep slate background */
+}
+::-webkit-scrollbar-track {
+    background: #1e293b; /* Slightly lighter slate for track */
+    border-radius: 6px;
+}
+::-webkit-scrollbar-thumb {
+    background: #3b82f6; /* Neon Blue thumb */
+    border-radius: 6px;
+    border: 2px solid #0f172a; /* Gives a sleek inset look */
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #a855f7; /* Turns Neon Purple on hover */
+}
+
+/* --- 12. Text Selection (Neon Blue highlight) --- */
+::selection {
+    background: #3b82f6 !important;
+    color: #ffffff !important;
+}
+::-moz-selection {
+    background: #3b82f6 !important;
+    color: #ffffff !important;
+}
+
+/* --- 13. Toolbox Hover & Selection States --- */
+.blocklyTreeRow:not(.blocklyTreeSelected):hover {
+    background-color: #1e293b !important; /* Slate hover */
+    border-radius: 4px;
+}
+.blocklyTreeSelected {
+    background-color: #3b82f6 !important; /* Neon Blue selection */
+    border-radius: 4px;
+}
+.blocklyTreeSelected .blocklyTreeLabel {
+    color: #ffffff !important;
+}
+
+/* --- 14. Blockly Workspace Background --- */
+.blocklyMainBackground {
+    fill: #0f172a !important; /* Force deep slate workspace bg */
+}
+
+/* --- 15. Flyout Background --- */
+.blocklyFlyoutBackground {
+    fill: #1e293b !important; /* Slate flyout bg */
+    fill-opacity: 0.95 !important;
+}
+
+/* --- 16. Dropdown & Widget Accents --- */
+.blocklyDropdownMenu .blocklyMenuItemSelected {
+    background-color: #3b82f6 !important;
+}
+.blocklyWidgetDiv .blocklyMenu {
+    background-color: #1e293b !important;
+    border: 1px solid #334155 !important;
+}
+
+/* --- 17. Simulator Status / Info Bar --- */
+.sim-info-bar {
+    background-color: #0f172a !important;
+    border-top: 1px solid #1e293b !important;
+}
+#mainmenu .home.icon,
+#mainmenu a[href*="home"],
+#mainmenu .item.home,
+#mainmenu .ui.item .home.icon {
+    display: none !important;
+}
+
+/* Hide any text-based Home link */
+#mainmenu .item:not(.logo):not(.ui.image):contains("Home") {
+    display: none !important;
+}
+
+/* Just in case it's a div or span */
+#mainmenu [data-content="Home"],
+#mainmenu [aria-label="Home"] {
+    display: none !important;
+}

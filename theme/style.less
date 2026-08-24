@@ -1,0 +1,225 @@
+/* Import all components */
+@import 'pxtsemantic';
+@import 'pxt';
+@import 'themepacks';
+@import 'blockly-toolbox';
+@import 'themes/default/globals/site.variables';
+@import 'themes/pxt/globals/site.variables';
+@import 'site/globals/site.variables';
+
+/* Reference import */
+@import (reference) "semantic.less";
+
+/*******************************
+    Add your custom CSS here
+*******************************/
+
+/* Roboto font */
+@RobotoFont: data-uri("../docs/static/fonts/Roboto_400_normal.woff");
+
+@font-face  {
+    font-family: 'Roboto';
+    src: @RobotoFont format("woff");
+}
+
+:root, .pxt-theme-root {
+    --pxt-page-font: @pageFont;
+}
+
+.ui.button.download-button {
+    background-color: var(--pxt-primary-background);
+    color: var(--pxt-primary-foreground);
+}
+
+.ui.button.hw-button {
+    background-color: var(--pxt-primary-accent) !important;
+    color: var(--pxt-primary-foreground) !important;
+}
+
+.docs.inlinebutton.ui.button.download-button:hover {
+    background-color: var(--pxt-primary-background);
+    color: var(--pxt-primary-foreground);
+}
+
+#editortools .ui.button.editortools-btn, .simtoolbar .ui.button.icon {
+    background-color: var(--pxt-secondary-background);
+    color: var(--pxt-secondary-foreground);
+
+    &:hover {
+        background-color: var(--pxt-secondary-background-hover);
+        color: var(--pxt-secondary-foreground-hover);
+    }
+}
+
+.main:not(.hc) {
+    .simtoolbar .ui.button.icon, #editortools .ui.button.editortools-btn {
+        &:hover {
+            filter: none;
+        }
+    }
+}
+
+#simulator .ui.button.play-button .icon.play {
+    color: var(--pxt-secondary-foreground) !important;
+}
+
+#downloadArea {
+    background: transparent !important;
+}
+
+#homescreen .ui.home {
+    .detailview .actions .card-action {
+        .button.approve {
+            background-color: @mainMenuTutorialBackground;
+        }
+    }
+    .tutorial-progress.orange {
+        background-color: @mainMenuTutorialBackground !important;
+        border-color: @mainMenuTutorialBackground !important;
+    }
+}
+
+/* Ensure project card timestamp fits within the card on tablet-width screens (e.g., iPad portrait) */
+@media only screen and (max-width: @largestTabletScreen) {
+    .projectsdialog .ui.card.file .meta {
+        font-size: 0.7rem;
+        padding: 0.5rem;
+    }
+}
+
+#tutorialcard {
+    .ui.button.orange.right.attached {
+        background-color: @mainMenuTutorialBackground;
+        &:focus, &:hover {
+            background-color: darken(@mainMenuTutorialBackground, 20%);
+        }
+    }
+}
+
+.time-machine-header {
+    background-color: @blue;
+}
+
+.time-machine-preview {
+    // Loading div that appears while projects are importing
+    & > div {
+        background: #e8e8e8
+    }
+}
+
+#root:not(.hc) .tutorial-menu {
+    .ui.circular.label.selected {
+        background-color: @purple !important;
+        color: #e8e8e8 !important;
+        border: 1px solid #e8e8e8 !important;
+
+        &:focus, &:hover {
+            background-color: darken(@purple, 20%) !important;
+        }
+    }
+}
+
+.menubar {
+    .ui.menu .brand .ui.logo {
+        height: 1.1rem;
+    }
+}
+
+.sound-effect-header {
+    background-color: rgb(230, 48, 34); // Match block color
+}
+
+
+.ui.black.microbit-ribbon.label {
+    position: absolute;
+    border-radius: 0;
+    margin: 0;
+    right: 0;
+    width: 45%;
+    height: 25%;
+    &::before {
+        content: "";
+        background-image: data-uri("../docs/static/logo.portrait.white.svg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        right: auto;
+        bottom: auto;
+        display: block;
+        width: 88%;
+        height: 76%;
+        max-width: 6.75rem;
+        max-height: 1.2rem;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* Mobile */
+@media only screen and (max-width: @largestMobileScreen) {
+    #filelist {
+        background: transparent !important;
+    }
+    #blocklySearchArea {
+        display: none !important;
+    }
+    .ui.black.microbit-ribbon.label {
+        width: 50%;
+        height: 25%;
+        &::before {
+            max-width: 4.9rem;
+            max-height: 0.875rem;
+        }
+    }
+}
+
+/* Tablet */
+@media only screen and (min-width: @tabletBreakpoint) and (max-width: @largestTabletScreen) {
+    #filelist {
+        background: transparent !important;
+    }
+    .ui.black.microbit-ribbon.label {
+        width: 55%;
+        height: 20%;
+        &::before {
+            max-width: 5.5rem;
+            max-height: 1rem;
+        }
+    }
+}
+
+/* Small Monitor */
+@media only screen and (min-width: @computerBreakpoint) and (max-width: @largestSmallMonitor) {
+}
+
+/* Large Monitor */
+@media only screen and (min-width: @largeMonitorBreakpoint) {
+}
+
+
+/* Download dialog */
+.ui.downloaddialog.modal>.content {
+    padding: 1rem;
+}
+
+.ui.webusbpair, .ui.upload {
+    .firmware {
+        background-color: #FFFFCE;
+        div.image {
+            justify-content: center;
+            display: flex;
+            padding: 1rem;
+
+            img {
+                height:100px;
+            }
+        }
+    }
+    .instructions {
+        img {
+            margin-bottom:1rem;
+        }
+    }
+}
